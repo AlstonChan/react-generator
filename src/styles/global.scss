@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "PoetsenOne";
+  src: url("../../public/font/PoetsenOne.ttf") format("truetype");
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--tertiary-color);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  // Colors
+  --primary-color: #1b1e27;
+  --tertiary-color: #e4f0ff;
+  --hightlight-color: #49a3af;
+  // Fonts
+  --heading: Merriweather, Verdana, Geneva, Tahoma, sans-serif;
+  --body: Radio Canada, Verdana, Geneva, Tahoma, sans-serif;
+  --body2: "PoetsenOne, Radio Canada, Verdana, Geneva, Tahoma, sans-serif";
+}
