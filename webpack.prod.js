@@ -5,6 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = merge(main, {
   mode: "production",
@@ -17,7 +19,9 @@ module.exports = merge(main, {
     clean: true,
   },
   optimization: {
+    emitOnErrors: true,
     minimize: true,
+    removeAvailableModules: true,
     minimizer: [
       new TerserPlugin({
         terserOptions: {
@@ -37,24 +41,33 @@ module.exports = merge(main, {
     runtimeChunk: "single",
     splitChunks: {
       chunks: "all",
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "all",
+        },
+      },
     },
   },
   module: {
     rules: [
+      // Capture scss module and css module file
       {
-        test: /\.css$/,
+        test: /\.(s[ac]ss|css)$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader, // fourth
           {
             loader: "css-loader",
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: "[name]_[hash:base64]",
+                auto: true,
+                localIdentName: "[path][name]__[local]",
                 localIdentHashDigest: "base64",
               },
             },
-          },
+          }, // third
           {
             loader: "postcss-loader",
             options: {
@@ -62,15 +75,17 @@ module.exports = merge(main, {
                 plugins: ["autoprefixer", "postcss-preset-env"],
               },
             },
-          },
+          }, // second
+          "sass-loader", // first
         ],
-        include: /\.module\.css$/,
+        include: /\.module\.(s[ac]ss|css)$/,
       },
+      // Capture scss and css file
       {
-        test: /\.css$/,
+        test: /\.(s[ac]ss|css)$/i,
         use: [
-          MiniCssExtractPlugin.loader, // go last (3)
-          "css-loader", //then this (2)
+          MiniCssExtractPlugin.loader, // fourth
+          "css-loader", // third
           {
             loader: "postcss-loader",
             options: {
@@ -78,9 +93,10 @@ module.exports = merge(main, {
                 plugins: ["autoprefixer", "postcss-preset-env"],
               },
             },
-          }, // first this (1)
+          }, // second
+          "sass-loader", // first
         ],
-        exclude: /\.module\.css$/,
+        exclude: /\.module\.(s[ac]ss|css)$/,
       },
     ],
   },
@@ -103,6 +119,7 @@ module.exports = merge(main, {
         minifyURLs: true,
       },
     }),
+    new BundleAnalyzerPlugin(),
   ],
   performance: {
     hints: "warning",

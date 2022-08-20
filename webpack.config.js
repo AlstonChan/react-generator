@@ -1,7 +1,5 @@
 var webpack = require("webpack");
 const Dotenv = require("dotenv-webpack");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   entry: {
@@ -40,7 +38,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: "react",
     }),
-    new BundleAnalyzerPlugin(),
     new Dotenv({
       path: "./.env",
     }),

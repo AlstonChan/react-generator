@@ -3,6 +3,8 @@ const main = require("./webpack.config");
 const { merge } = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = merge(main, {
   mode: "development",
@@ -23,16 +25,36 @@ module.exports = merge(main, {
     compress: true,
     historyApiFallback: true,
     client: {
-      overlay: false,
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+      reconnect: 3,
+      progress: true,
       logging: "warn", // Want to set this to 'warn' or 'error'
     },
   },
+  optimization: {
+    runtimeChunk: "single",
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
+    emitOnErrors: true,
+    mangleExports: false,
+  },
   module: {
     rules: [
+      // Capture scss module and css module file
       {
         test: /\.(s[ac]ss|css)$/i,
         use: [
-          "style-loader", // go last (4)
+          { loader: "style-loader", options: { injectType: "styleTag" } }, // fifth
           {
             loader: "css-loader",
             options: {
@@ -43,7 +65,7 @@ module.exports = merge(main, {
                 localIdentHashDigest: "base64",
               },
             },
-          }, //then this (3)
+          }, // fourth
           {
             loader: "postcss-loader",
             options: {
@@ -51,16 +73,18 @@ module.exports = merge(main, {
                 plugins: ["autoprefixer", "postcss-preset-env"],
               },
             },
-          }, //then this (2)
-          "sass-loader", // first this (1)
+          }, // third
+          "resolve-url-loader", // second
+          "sass-loader", // first
         ],
-        include: /\.module\.css$/,
+        include: /\.module\.(s[ac]ss|css)$/,
       },
+      // Capture scss and css file
       {
         test: /\.(s[ac]ss|css)$/i,
         use: [
-          "style-loader", // go last (4)
-          "css-loader", //then this (3)
+          { loader: "style-loader", options: { injectType: "styleTag" } }, // fifth
+          "css-loader", // fourth
           {
             loader: "postcss-loader",
             options: {
@@ -68,10 +92,11 @@ module.exports = merge(main, {
                 plugins: ["autoprefixer", "postcss-preset-env"],
               },
             },
-          }, // first this (2)
-          "sass-loader", // first this (1)
+          }, // third
+          "resolve-url-loader", // second
+          "sass-loader", // first
         ],
-        exclude: /\.module\.css$/,
+        exclude: /\.module\.(s[ac]ss|css)$/,
       },
       {
         test: /\.(js|jsx)$/,
@@ -89,6 +114,7 @@ module.exports = merge(main, {
   plugins: [
     new HtmlWebpackPlugin({ inject: true, template: "./public/index.html" }),
     new ReactRefreshWebpackPlugin(),
+    new BundleAnalyzerPlugin({ logLevel: "silent", openAnalyzer: false }),
   ].filter(Boolean),
   resolve: {
     extensions: [".jsx", ".js"],
