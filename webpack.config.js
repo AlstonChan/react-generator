@@ -42,5 +42,14 @@ module.exports = {
       path: "./.env",
     }),
   ],
+  resolve: {
+    alias: {
+      $Public: path.resolve(__dirname, "public/"),
+      $Lib: path.resolve(__dirname, "src/lib/"),
+      $Routes: path.resolve(__dirname, "src/routes/"),
+      $Styles: path.resolve(__dirname, "src/styles/"),
+      $Components: path.resolve(__dirname, "src/components/"),
+    },
+  },
   target: "web",
 };
