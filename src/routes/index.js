@@ -2,7 +2,7 @@ import styles from "../styles/homepage.module.scss";
 import react from "../../public/react.png";
 import webpack from "../../public/webpack.png";
 
-import ImageRender from "../lib/ImageRender";
+import Image from "@chan_alston/image";
 
 export default function Homepage() {
   return (
@@ -13,10 +13,14 @@ export default function Homepage() {
       <main>
         <div className={styles.container}>
           <div className={styles.imgContainer}>
-            <ImageRender src={react} className={styles.reactSpin} />
+            <Image
+              src={react}
+              alt="react js icon"
+              className={styles.reactSpin}
+            />
           </div>
           <div className={styles.imgContainer}>
-            <ImageRender src={webpack} />
+            <Image src={webpack} alt="webpack icon" />
           </div>
         </div>
       </main>

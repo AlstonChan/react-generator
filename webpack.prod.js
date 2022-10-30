@@ -65,16 +65,16 @@ module.exports = (env) => {
       rules: [
         // Capture scss module and css module file
         {
-          test: /\.module\.(s[ac]ss|css)$/i,
+          test: /\.module\.(scss|css)$/i,
           use: [
             MiniCssExtractPlugin.loader, // fourth
             {
               loader: "css-loader",
               options: {
                 importLoaders: 1,
+                sourceMap: true,
                 modules: {
-                  auto: true,
-                  localIdentName: "[path][name]__[local]",
+                  localIdentName: "[name]_[local]_[hash:base64:5]",
                   localIdentHashDigest: "base64",
                 },
               },
@@ -92,8 +92,8 @@ module.exports = (env) => {
         },
         // Capture scss and css file
         {
-          test: /\.(s[ac]ss|css)$/i,
-          exclude: /\.module\.(s[ac]ss|css)$/,
+          test: /\.(scss|css)$/i,
+          exclude: /\.module\.(scss|css)$/i,
           use: [
             MiniCssExtractPlugin.loader, // fourth
             "css-loader", // third
@@ -111,7 +111,9 @@ module.exports = (env) => {
       ],
     },
     plugins: [
-      new MiniCssExtractPlugin({ filename: "styles/[name].[contenthash].css" }),
+      new MiniCssExtractPlugin({
+        filename: "styles/[name].[contenthash].css",
+      }),
       new CompressionPlugin(),
       new HtmlWebpackPlugin({
         template: "./public/index.html",

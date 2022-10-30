@@ -55,13 +55,14 @@ module.exports = (env) => {
       rules: [
         // Capture scss module and css module file
         {
-          test: /\.module\.(s[ac]ss|css)$/i,
+          test: /\.module\.(scss|css)$/i,
           use: [
             { loader: "style-loader", options: { injectType: "styleTag" } }, // fifth
             {
               loader: "css-loader",
               options: {
                 importLoaders: 1,
+                sourceMap: true,
                 modules: {
                   auto: true,
                   localIdentName: "[path][name]__[local]",
@@ -83,8 +84,8 @@ module.exports = (env) => {
         },
         // Capture scss and css file
         {
-          test: /\.(s[ac]ss|css)$/i,
-          exclude: /\.module\.(s[ac]ss|css)$/,
+          test: /\.(scss|css)$/i,
+          exclude: /\.module\.(scss|css)$/i,
           use: [
             { loader: "style-loader", options: { injectType: "styleTag" } }, // fifth
             "css-loader", // fourth
