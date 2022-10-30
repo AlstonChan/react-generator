@@ -17,7 +17,9 @@ A React template bundled with Webpack 5
 ## Installation
 
 ```bash
-npm i https://github.com/AlstonChan/react-webpack-template.git
+git clone https://github.com/AlstonChan/react-webpack-template.git
+cd react-webpack-template
+npm i
 ```
 
 ## Package. json script option
