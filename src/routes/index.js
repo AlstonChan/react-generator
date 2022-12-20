@@ -4,6 +4,8 @@ import webpack from "../../public/webpack.png";
 
 import Image from "@chan_alston/image";
 
+import React from "react";
+
 export default function Homepage() {
   return (
     <div className={styles.all}>

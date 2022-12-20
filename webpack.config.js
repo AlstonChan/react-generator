@@ -39,9 +39,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: "react",
     }),
-    new Dotenv({
-      path: "./.env",
-    }),
+    new Dotenv({ safe: true, systemvars: true }),
   ],
   resolve: {
     alias: {
