@@ -39,7 +39,7 @@ Set the `NODE_ENV` environment variable to *development* and start a webpack dev
 
 ### 2. `npm run build-local`
 
-Set the `NODE_ENV` environment variable to *production* and output the bundled application to `/dist` directory using the `webpack.prod.js` configuration file. The `--env ANALYZE=true` will enable **BundleAnalyzerPlugin** and open ***[localhost:8888](http://localhost:8888)*** automatically upon bundled file is outputed to the `dist` directory. Optimal for local development.
+Set the `NODE_ENV` environment variable to *production* and output the bundled application to `/dist` directory using the `webpack.prod.js` configuration file. The `--env ANALYZE=true` will enable **BundleAnalyzerPlugin** and open ***[localhost:8888](http://localhost:8888)*** automatically upon bundled file is outputted to the `dist` directory. Optimal for local development.
 
 ### 3. `npm run build`
 
@@ -56,3 +56,17 @@ Lint all the code in the `src` directory (except .test) file.
 ### 6. `npm run lint:fix`
 
 Lint all the code in the `src` directory (except .test) file and fix all the auto fixable warning/error.
+
+## Running **`dist`** folder file locally
+
+To run the built version locally, install the following package (globally on your machine).
+
+```bash
+npm install -g http-server
+```
+
+Use the following command in the `dist` folder to start the server locally.
+
+```bash
+http-server
+```

@@ -22,7 +22,7 @@
   transition: transform 260ms ease-in-out, color 160ms ease-in-out;
 
   &:hover {
-    color: var(--hightlight-color);
+    color: var(--highlight-color);
     transform: translate(0, 3px);
   }
 }
