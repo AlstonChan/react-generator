@@ -1,19 +1,17 @@
 {
-  "name": "react-webpack-template",
+  "name": "react-generator",
   "version": "1.0.0",
   "private": true,
-  "description": "A React template bundled with Webpack 5 ",
+  "description": "A React app generator bundled with Webpack 5 and Babel",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve --config webpack.dev.js",
-    "build-local": "cross-env NODE_ENV=production webpack --config webpack.prod.js --env ANALYZE=true",
+    "build:local": "cross-env NODE_ENV=production webpack --config webpack.prod.js --env ANALYZE=true",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js --env ANALYZE=false",
     "test": "cross-env NODE_ENV=test jest --watchAll",
     "lint": "npx eslint src/**",
     "lint:fix": "npx eslint src/** --fix"
   },
-  "author": "AlstonChan",
-  "license": "MIT",
   "dependencies": {
     "@chan_alston/image": "^0.0.8",
     "react": "^18.2.0",

@@ -1,0 +1,42 @@
+{
+  "name": "react-generator",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "ncc build ./index.ts -w -o dist/"
+  },
+  "bin": {
+    "create-react-app": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "template"
+  ],
+  "keywords": [
+    "react",
+    "reactjs",
+    "crate-react-app",
+    "react generator"
+  ],
+  "author": "AlstonChan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlstonChan/react-generator"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^18.16.0",
+    "@types/validate-npm-package-name": "^4.0.0",
+    "chalk": "^5.2.0",
+    "inquirer": "^9.1.5",
+    "ora": "^6.3.0",
+    "typescript": "^5.0.4",
+    "validate-npm-package-name": "^5.0.0",
+    "which": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

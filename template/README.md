@@ -7,29 +7,9 @@
   <img src="https://img.shields.io/badge/webpack-5299c7.svg?style=for-the-badge&logo=webpack&logoColor=white" />
 </div>
 
-# React Webpack Template
+# React Generator (Webpack + Babel)
 
-A React template bundled with Webpack 5
-
-## Features
-
-- [x] Webpack Hot Module Replacement
-- [x] Bundle Optimization
-- [x] React Testing Library with Jest for unit testing
-- [x] Support for various type of images, fonts
-- [x] Transplile code with Babel
-- [x] Support css module and scss module
-- [x] Minified js and stylesheet
-- [x] Integrated BundleAnalyzerPlugin to inspect bundle size
-- [x] Remove console.log() on production
-
-## Installation
-
-```bash
-git clone https://github.com/AlstonChan/react-webpack-template.git
-cd react-webpack-template
-npm i
-```
+A React app generator bundled with Webpack 5 and Babel
 
 ## Package. json script option
 
@@ -37,7 +17,7 @@ npm i
 
 Set the `NODE_ENV` environment variable to *development* and start a webpack dev server at ***[localhost:3000](http://localhost:3000)*** using the `webpack.dev.js` configuration file. You may open ***[localhost:8888](http://localhost:8888)*** and visualized the bundle size of the application.
 
-### 2. `npm run build-local`
+### 2. `npm run build:local`
 
 Set the `NODE_ENV` environment variable to *production* and output the bundled application to `/dist` directory using the `webpack.prod.js` configuration file. The `--env ANALYZE=true` will enable **BundleAnalyzerPlugin** and open ***[localhost:8888](http://localhost:8888)*** automatically upon bundled file is outputted to the `dist` directory. Optimal for local development.
 
