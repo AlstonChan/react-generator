@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 devDependencies:
+  '@types/cross-spawn':
+    specifier: ^6.0.2
+    version: 6.0.2
   '@types/inquirer':
     specifier: ^9.0.3
     version: 9.0.3
@@ -10,9 +13,18 @@ devDependencies:
   '@types/validate-npm-package-name':
     specifier: ^4.0.0
     version: 4.0.0
+  '@types/which':
+    specifier: ^3.0.0
+    version: 3.0.0
+  '@vercel/ncc':
+    specifier: ^0.36.1
+    version: 0.36.1
   chalk:
     specifier: ^5.2.0
     version: 5.2.0
+  cross-spawn:
+    specifier: ^7.0.3
+    version: 7.0.3
   inquirer:
     specifier: ^9.1.5
     version: 9.1.5
@@ -30,6 +42,12 @@ devDependencies:
     version: 3.0.0
 
 packages:
+
+  /@types/cross-spawn@6.0.2:
+    resolution: {integrity: sha512-KuwNhp3eza+Rhu8IFI5HUXRP0LIhqH5cAjubUvGXXthh4YYBuP2ntwEX+Cz8GJoZUHlKo247wPWOfA9LYEq4cw==}
+    dependencies:
+      '@types/node': 18.16.0
+    dev: true
 
   /@types/inquirer@9.0.3:
     resolution: {integrity: sha512-CzNkWqQftcmk2jaCWdBTf9Sm7xSw4rkI1zpU/Udw3HX5//adEZUIm9STtoRP1qgWj0CWQtJ9UTvqmO2NNjhMJw==}
@@ -50,6 +68,15 @@ packages:
 
   /@types/validate-npm-package-name@4.0.0:
     resolution: {integrity: sha512-RpO62vB2lkjEkyLbwTheA2+uwYmtVMWTr/kWRI++UAgVdZqNqdAuIQl/SxBCGeMKfdjWaXPbyhZbiCc4PAj+KA==}
+    dev: true
+
+  /@types/which@3.0.0:
+    resolution: {integrity: sha512-ASCxdbsrwNfSMXALlC3Decif9rwDMu+80KGp5zI2RLRotfMsTv7fHL8W8VDp24wymzDyIFudhUeSCugrgRFfHQ==}
+    dev: true
+
+  /@vercel/ncc@0.36.1:
+    resolution: {integrity: sha512-S4cL7Taa9yb5qbv+6wLgiKVZ03Qfkc4jGRuiUQMQ8HGBD5pcNRnHeYM33zBvJE4/zJGjJJ8GScB+WmTsn9mORw==}
+    hasBin: true
     dev: true
 
   /ansi-escapes@6.1.0:
@@ -123,6 +150,15 @@ packages:
   /clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
+    dev: true
+
+  /cross-spawn@7.0.3:
+    resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
+    engines: {node: '>= 8'}
+    dependencies:
+      path-key: 3.1.1
+      shebang-command: 2.0.0
+      which: 2.0.2
     dev: true
 
   /defaults@1.0.4:
@@ -267,6 +303,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /path-key@3.1.1:
+    resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
+    engines: {node: '>=8'}
+    dev: true
+
   /readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
@@ -309,6 +350,18 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
+    dev: true
+
+  /shebang-command@2.0.0:
+    resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
+    engines: {node: '>=8'}
+    dependencies:
+      shebang-regex: 3.0.0
+    dev: true
+
+  /shebang-regex@3.0.0:
+    resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
+    engines: {node: '>=8'}
     dev: true
 
   /signal-exit@3.0.7:
@@ -385,6 +438,14 @@ packages:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
     dependencies:
       defaults: 1.0.4
+    dev: true
+
+  /which@2.0.2:
+    resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
+    engines: {node: '>= 8'}
+    hasBin: true
+    dependencies:
+      isexe: 2.0.0
     dev: true
 
   /which@3.0.0:

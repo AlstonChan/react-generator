@@ -1,10 +1,11 @@
 {
   "name": "react-generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "A React app generator bundled with Webpack 5 and Babel",
   "type": "module",
   "scripts": {
-    "dev": "ncc build ./index.ts -w -o dist/"
+    "dev": "ncc build ./index.ts -w -o dist/",
+    "build": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register"
   },
   "bin": {
     "create-react-app": "./dist/index.js"
@@ -19,17 +20,25 @@
     "crate-react-app",
     "react generator"
   ],
-  "author": "AlstonChan",
+  "author": {
+    "name": "Chan Alston",
+    "email": "devalston390@gmail.com",
+    "url": "https://www.chanalston.com"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/AlstonChan/react-generator"
   },
   "devDependencies": {
+    "@types/cross-spawn": "^6.0.2",
     "@types/inquirer": "^9.0.3",
     "@types/node": "^18.16.0",
     "@types/validate-npm-package-name": "^4.0.0",
+    "@types/which": "^3.0.0",
+    "@vercel/ncc": "^0.36.1",
     "chalk": "^5.2.0",
+    "cross-spawn": "^7.0.3",
     "inquirer": "^9.1.5",
     "ora": "^6.3.0",
     "typescript": "^5.0.4",

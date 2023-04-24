@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { QuestionCollection } from "inquirer";
+import inquirer, { QuestionCollection } from "inquirer";
 import path from "node:path";
 import validate from "validate-npm-package-name";
 
@@ -21,6 +21,13 @@ const projectName: QuestionCollection = {
   },
 };
 
-const questions = [projectName];
+const packageManager: QuestionCollection = {
+  name: "packageManager",
+  type: "list",
+  message: "Select your choice of package manager:",
+  choices: ["npm", "yarn", "pnpm"],
+};
+
+const questions = [projectName, packageManager];
 
 export default questions;
