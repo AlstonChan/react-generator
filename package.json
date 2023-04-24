@@ -1,65 +1,51 @@
 {
-  "name": "react-webpack-template",
+  "name": "react-generator",
   "version": "1.0.0",
-  "private": true,
-  "description": "A React template bundled with Webpack 5 ",
-  "main": "index.js",
+  "description": "A React app generator bundled with Webpack 5 and Babel",
+  "type": "module",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack serve --config webpack.dev.js",
-    "build-local": "cross-env NODE_ENV=production webpack --config webpack.prod.js --env ANALYZE=true",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js --env ANALYZE=false",
-    "test": "cross-env NODE_ENV=test jest --watchAll",
-    "lint": "npx eslint src/**",
-    "lint:fix": "npx eslint src/** --fix"
+    "dev": "ncc build ./index.ts -w -o dist/",
+    "build": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register"
   },
-  "author": "AlstonChan",
+  "bin": {
+    "create-react-app": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "template"
+  ],
+  "keywords": [
+    "react",
+    "reactjs",
+    "crate-react-app",
+    "react generator"
+  ],
+  "author": {
+    "name": "Chan Alston",
+    "email": "devalston390@gmail.com",
+    "url": "https://www.chanalston.com"
+  },
   "license": "MIT",
-  "dependencies": {
-    "@chan_alston/image": "^0.0.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet-async": "^1.3.0",
-    "react-router-dom": "^6.10.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlstonChan/react-generator"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.3",
-    "@babel/eslint-parser": "^7.21.3",
-    "@babel/plugin-transform-runtime": "^7.21.0",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^14.0.0",
-    "autoprefixer": "^10.4.14",
-    "babel-jest": "^29.5.0",
-    "babel-loader": "^9.1.2",
-    "babel-plugin-react-remove-properties": "^0.3.0",
-    "compression-webpack-plugin": "^10.0.0",
-    "core-js": "^3.29.1",
-    "cross-env": "^7.0.3",
-    "css-loader": "^6.7.3",
-    "dotenv-webpack": "^8.0.1",
-    "eslint": "^8.37.0",
-    "eslint-plugin-react": "^7.32.2",
-    "html-webpack-plugin": "^5.5.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^29.5.0",
-    "jest-environment-jsdom": "^29.5.0",
-    "mini-css-extract-plugin": "^2.7.5",
-    "postcss": "^8.4.21",
-    "postcss-assets": "^6.0.0",
-    "postcss-loader": "^7.1.0",
-    "postcss-preset-env": "^8.2.0",
-    "react-refresh": "^0.14.0",
-    "resolve-url-loader": "^5.0.0",
-    "sass": "^1.60.0",
-    "sass-loader": "^13.2.2",
-    "style-loader": "^3.3.2",
-    "terser-webpack-plugin": "^5.3.7",
-    "webpack": "^5.77.0",
-    "webpack-bundle-analyzer": "^4.8.0",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.13.1",
-    "webpack-merge": "^5.8.0"
+    "@types/cross-spawn": "^6.0.2",
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^18.16.0",
+    "@types/validate-npm-package-name": "^4.0.0",
+    "@types/which": "^3.0.0",
+    "@vercel/ncc": "^0.36.1",
+    "chalk": "^5.2.0",
+    "cross-spawn": "^7.0.3",
+    "inquirer": "^9.1.5",
+    "ora": "^6.3.0",
+    "typescript": "^5.0.4",
+    "validate-npm-package-name": "^5.0.0",
+    "which": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
