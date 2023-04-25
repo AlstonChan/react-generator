@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -22,9 +24,9 @@ async function createProject() {
     // since file will actually be executed in dist folder
     // we have to back up one step in order to get the
     // correct template path
-    const noDirPath = path.dirname(__dirname);
+    const noDistPath = path.dirname(__dirname);
     // where the template folder located at
-    const templatePath: string = `${noDirPath}/template`;
+    const templatePath: string = `${noDistPath}/template`;
     // user current working directory where user wants to
     // create react template folder at
     const projectPath = path.join(process.cwd(), projectName);
@@ -44,6 +46,7 @@ async function createProject() {
     console.log(
       `Project ${chalk.green.bold(projectName)} was successfully created!`,
       "\n",
+      "\n",
       "To start developing your react app, run",
       "\n",
       "\n",
@@ -57,7 +60,6 @@ async function createProject() {
       )}`,
       "\n",
       `For more information, kindly refer to ${chalk.cyan.bold("README.md")}`,
-      "\n",
       "\n"
     );
   } catch (error) {

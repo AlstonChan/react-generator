@@ -22,6 +22,7 @@ export const installDeps = async (
 
       installationProcess.on("error", (error) => {
         spinner.fail("Failed to install dependencies");
+        console.error("\n", error);
         reject(error);
       });
 

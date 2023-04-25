@@ -1,14 +1,18 @@
 {
-  "name": "react-generator",
-  "version": "1.0.0",
+  "name": "@chan_alston/react-generator",
+  "version": "1.0.10",
   "description": "A React app generator bundled with Webpack 5 and Babel",
   "type": "module",
   "scripts": {
     "dev": "ncc build ./index.ts -w -o dist/",
-    "build": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register"
+    "exec:dev": "node ./dist/index.js",
+    "prebuild": "rimraf ./dist/",
+    "build": "ncc build ./index.ts -o ./dist/ --minify --no-cache --no-source-map-register",
+    "shebang": "tsc --project ./helper/shebang-add-newline/tsconfig.shebang.json && node ./dist/shebang.js",
+    "release": "npm run build && npm run shebang"
   },
   "bin": {
-    "create-react-app": "./dist/index.js"
+    "react-generator": "./dist/output.js"
   },
   "files": [
     "dist",
@@ -39,13 +43,14 @@
     "@vercel/ncc": "^0.36.1",
     "chalk": "^5.2.0",
     "cross-spawn": "^7.0.3",
-    "inquirer": "^9.1.5",
+    "inquirer": "^9.2.0",
     "ora": "^6.3.0",
+    "rimraf": "^5.0.0",
     "typescript": "^5.0.4",
     "validate-npm-package-name": "^5.0.0",
     "which": "^3.0.0"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.14.0"
   }
 }

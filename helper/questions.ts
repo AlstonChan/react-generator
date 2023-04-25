@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import inquirer, { QuestionCollection } from "inquirer";
+import { QuestionCollection } from "inquirer";
 import path from "node:path";
 import validate from "validate-npm-package-name";
 
