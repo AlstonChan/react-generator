@@ -1,4 +1,4 @@
-import styles from "../styles/homepage.module.scss";
+import styles from "$Styles/homepage.module.scss";
 import react from "../../public/react.png";
 import webpack from "../../public/webpack.png";
 
@@ -10,7 +10,7 @@ export default function Homepage() {
   return (
     <div className={styles.all}>
       <header className={styles.header}>
-        <h1 className={styles.navHeader}>React Webpack Template</h1>
+        <h1 className={styles.navHeader}>React Generator (Webpack + Babel)</h1>
       </header>
       <main>
         <div className={styles.container}>

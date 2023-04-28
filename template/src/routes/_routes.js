@@ -1,4 +1,4 @@
-import "../styles/global.scss";
+import "$Styles/global.scss";
 
 import { Routes, Route } from "react-router-dom";
 

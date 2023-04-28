@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
+const imgExtension = /\.(png|svg|jpg|jpeg|gif|webp|avif|heic|heif|ico)/i;
+
 const createPackageJSON = async (
   projectPath: string,
   file: string,
@@ -18,6 +20,9 @@ const createFile = async (
   projectPath: string,
   file: string
 ) => {
+  const isBinaryFileType = path.extname(file).match(imgExtension);
+  const binaryFileContent =
+    isBinaryFileType && fs.readFileSync(filePath, { encoding: "binary" });
   const fileContent = fs.readFileSync(filePath, { encoding: "utf8" });
 
   switch (file) {
@@ -35,7 +40,13 @@ const createFile = async (
 
     default:
       const fileDestination = path.join(projectPath, file);
-      fs.writeFileSync(fileDestination, fileContent, "utf8");
+
+      if (binaryFileContent) {
+        console.log(file);
+        fs.writeFileSync(fileDestination, binaryFileContent, "binary");
+      } else {
+        fs.writeFileSync(fileDestination, fileContent, "utf8");
+      }
       break;
   }
 };

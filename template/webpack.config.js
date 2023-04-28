@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     index: "./src/index.js",
   },
-  // Rules of how webpack will take our files, complie & bundle them for the browser
+  // Rules of how webpack will take our files, compile & bundle them for the browser
   module: {
     rules: [
       {
@@ -20,7 +20,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|webp|avif|heic|heif|ico)$/i,
         type: "asset/resource",
         generator: {
           filename: "images/[hash][ext][query]",
