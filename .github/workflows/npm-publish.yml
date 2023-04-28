@@ -21,7 +21,7 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org/
       - name: Doing a clean installation of dependencies
-        run: pnpm ci
+        run: pnpm install
       - name: build the package
         run: pnpm run release
       - name: Publish package to npm registry
