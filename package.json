@@ -1,6 +1,6 @@
 {
   "name": "@chan_alston/react-generator",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A React app generator bundled with Webpack 5 and Babel",
   "type": "module",
   "scripts": {
@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/cross-spawn": "^6.0.2",
     "@types/inquirer": "^9.0.3",
-    "@types/node": "^18.16.0",
+    "@types/node": "^18.16.3",
     "@types/validate-npm-package-name": "^4.0.0",
     "@types/which": "^3.0.0",
     "@vercel/ncc": "^0.36.1",

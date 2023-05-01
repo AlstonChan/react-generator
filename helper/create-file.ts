@@ -42,7 +42,6 @@ const createFile = async (
       const fileDestination = path.join(projectPath, file);
 
       if (binaryFileContent) {
-        console.log(file);
         fs.writeFileSync(fileDestination, binaryFileContent, "binary");
       } else {
         fs.writeFileSync(fileDestination, fileContent, "utf8");
