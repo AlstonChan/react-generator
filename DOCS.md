@@ -1,12 +1,31 @@
-# Documentation
+# Developer Notes
 
-## Package execution with `npx` return error in Windows
+## Getting Started
+
+1. To start development, first clone the repository:
+
+    ```git
+    git clone https://github.com/AlstonChan/react-generator.git
+    ```
+
+2. Commands
+
+    1. **`pnpm dev`** : Run this command for developing and debugging
+    2. **`pnpm exec:dev`** : Execute the development version of bundle by `pnpm dev` for testing. Not able to test if applications can work with npx.
+    3. **`pnpm prebuild`** : Remove the dist folder and all its content
+    4. **`pnpm build`** : Build the bundle for production
+    5. **`pnpm shebang`** : Add shebang to the file so npx can execute smoothly
+    6. **`pnpm release`** : Run both `pnpm build` and `pnpm shebang`, used by deployment server or local testing with `npm pack`.
+
+## Documentation
+
+### Package execution with `npx` return error in Windows
 
 This is primarily due to the missing of **shebang line**, read [this post](https://stackoverflow.com/questions/33509816/what-exactly-does-usr-bin-env-node-do-at-the-beginning-of-node-files) for more information.
 
 To solve this, include `#!/usr/bin/env node` in the top of the entry file and the problem will be fixed. Also, `bin` property have to be added to `package.json`. Check out this [stackoverflow post](https://stackoverflow.com/questions/25333570/npm-package-json-bin-wont-work-on-windows) for more info.
 
-## The generated cmd has syntax error and returns error when executed
+### The generated cmd has syntax error and returns error when executed
 
 When executing the package with `npx`, it will return the following error:
 
