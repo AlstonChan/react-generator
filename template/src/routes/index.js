@@ -10,7 +10,13 @@ export default function Homepage() {
   return (
     <div className={styles.all}>
       <header className={styles.header}>
-        <h1 className={styles.navHeader}>React Generator (Webpack + Babel)</h1>
+        <a
+          href="https://github.com/AlstonChan/react-generator"
+          target="_blank"
+          className={styles.navHeader}
+        >
+          React Generator (Webpack + Babel)
+        </a>
       </header>
       <main>
         <div className={styles.container}>
@@ -27,7 +33,10 @@ export default function Homepage() {
         </div>
       </main>
       <footer className={styles.footer}>
-        Created by <a href="https://github.com/AlstonChan">AlstonChan</a>
+        Created by{" "}
+        <a href="https:/www.chanalston.com" target="_blank">
+          AlstonChan
+        </a>
       </footer>
     </div>
   );

@@ -19,6 +19,7 @@
   font-weight: bold;
   cursor: pointer;
   color: var(--primary-color);
+  text-decoration: none;
   transition: transform 260ms ease-in-out, color 160ms ease-in-out;
 
   &:hover {
