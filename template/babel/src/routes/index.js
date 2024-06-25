@@ -14,6 +14,7 @@ export default function Homepage() {
           href="https://github.com/AlstonChan/react-generator"
           target="_blank"
           className={styles.navHeader}
+          rel="noreferrer"
         >
           React Generator (Webpack + Babel)
         </a>
@@ -25,16 +26,21 @@ export default function Homepage() {
               src={react}
               alt="react js icon"
               className={styles.reactSpin}
+              style={{ width: "100%", height: "auto" }}
             />
           </div>
           <div className={styles.imgContainer}>
-            <Image src={webpack} alt="webpack icon" />
+            <Image
+              src={webpack}
+              alt="webpack icon"
+              style={{ width: "100%", height: "auto" }}
+            />
           </div>
         </div>
       </main>
       <footer className={styles.footer}>
         Created by{" "}
-        <a href="https:/www.chanalston.com" target="_blank">
+        <a href="https:/www.chanalston.com" target="_blank" rel="noreferrer">
           AlstonChan
         </a>
       </footer>
