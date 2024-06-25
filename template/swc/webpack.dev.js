@@ -1,10 +1,9 @@
-const path = require("path");
+const path = require("node:path");
 const main = require("./webpack.config");
 const { merge } = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = (env) => {
   console.log("Mode:", process.env.NODE_ENV);
@@ -105,9 +104,18 @@ module.exports = (env) => {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
-            loader: "babel-loader",
+            loader: "swc-loader",
             options: {
-              plugins: [require.resolve("react-refresh/babel")].filter(Boolean),
+              jsc: {
+                transform: {
+                  react: {
+                    // swc-loader will check whether webpack mode is 'development'
+                    // and set this automatically starting from 0.1.13. You could also set it yourself.
+                    // swc won't enable fast refresh when development is false
+                    refresh: true,
+                  },
+                },
+              },
             },
           },
         },

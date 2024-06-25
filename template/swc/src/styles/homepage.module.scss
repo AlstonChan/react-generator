@@ -1,0 +1,58 @@
+.all {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+.navHeader {
+  list-style: none;
+  padding: 10px;
+  font-size: 1.7rem;
+  font-family: var(--heading);
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: transform 260ms ease-in-out, color 160ms ease-in-out;
+
+  &:hover {
+    color: var(--highlight-color);
+    transform: translate(0, 3px);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+.imgContainer {
+  width: 240px;
+  height: 240px;
+}
+@keyframes ReactSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.reactSpin {
+  animation-duration: 10s;
+  animation-name: ReactSpin;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.footer {
+  font-family: var(--body);
+  padding-top: 15px;
+}

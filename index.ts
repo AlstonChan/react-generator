@@ -17,9 +17,7 @@ console.log("", "\n", chalk.green.bold("REACT APP GENERATOR"), "", "\n");
 
 async function createProject() {
   try {
-    const { projectName, packageManager }: Answers = await inquirer.prompt(
-      questions
-    );
+    const { projectName, packageManager }: Answers = await inquirer.prompt(questions);
     const __dirname: string = path.dirname(fileURLToPath(import.meta.url));
     // since file will actually be executed in dist folder
     // we have to back up one step in order to get the
@@ -40,7 +38,7 @@ async function createProject() {
     // change directory to the newly created react app
     process.chdir(projectPath);
 
-    await installDeps(packageManager, projectPath);
+    // await installDeps(packageManager, projectPath);
     await initGit();
 
     console.log(
@@ -55,9 +53,7 @@ async function createProject() {
       `${packageManager} run dev`,
       "\n",
       "\n",
-      `Open your browser and head to ${chalk.cyan.bold(
-        "http://127.0.0.1:3000"
-      )}`,
+      `Open your browser and head to ${chalk.cyan.bold("http://127.0.0.1:3000")}`,
       "\n",
       `For more information, kindly refer to ${chalk.cyan.bold("README.md")}`,
       "\n"
