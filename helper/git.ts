@@ -1,22 +1,9 @@
-import which from "which";
-import chalk from "chalk";
+// Nodejs modules
 import { execSync } from "child_process";
 
-function isInGitRepository(): boolean {
-  try {
-    execSync("git rev-parse --is-inside-work-tree", { stdio: "ignore" });
-    return true;
-  } catch (_) {}
-  return false;
-}
-
-function isInMercurialRepository(): boolean {
-  try {
-    execSync("hg --cwd . root", { stdio: "ignore" });
-    return true;
-  } catch (_) {}
-  return false;
-}
+// External modules
+import which from "which";
+import chalk from "chalk";
 
 export const initGit = async () => {
   try {
@@ -30,17 +17,20 @@ export const initGit = async () => {
       execSync("git init", { stdio: "ignore" });
       execSync("git checkout -b main", { stdio: "ignore" });
       execSync("git add -A", { stdio: "ignore" });
-      execSync('git commit -m "Initial commit from React Generator"', {
+      execSync('git commit -m "Initial commit from React App Generator"', {
         stdio: "ignore",
       });
 
       return initSuccess();
     } else {
+      console.error(
+        chalk.red("git command not found, make sure git is installed on your system")
+      );
       return initFailed();
     }
-  } catch (error: any) {
+  } catch (error) {
     initFailed();
-    throw new Error(error);
+    console.error(chalk.red("An error occurred while initializing git repository"));
   }
 };
 
@@ -50,4 +40,30 @@ function initFailed() {
 
 function initSuccess() {
   console.log(`${chalk.yellow.bold("✓ git")} initialized`, "\n");
+}
+
+/**
+ * Check if the current working directory is a git repository
+ */
+function isInGitRepository(): boolean {
+  try {
+    execSync("git rev-parse --is-inside-work-tree", { stdio: "ignore" });
+    console.error("You are already in a git repository.");
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
+/**
+ * Check if the current working directory is a mercurial repository
+ */
+function isInMercurialRepository(): boolean {
+  try {
+    execSync("hg --cwd . root", { stdio: "ignore" });
+    console.error("You are already in a mercurial repository.");
+    return true;
+  } catch (_) {
+    return false;
+  }
 }

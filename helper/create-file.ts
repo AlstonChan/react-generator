@@ -1,6 +1,11 @@
+// Nodejs modules
 import fs from "node:fs";
 import path from "node:path";
 
+// External modules
+import chalk from "chalk";
+
+// Constants
 const binaryFileType = /\.(png|svg|jpg|jpeg|gif|webp|avif|heic|heif|ico|ttf)/i;
 
 const createPackageJSON = async (
@@ -30,12 +35,13 @@ const createFile = async (filePath: string, projectPath: string, file: string) =
     // is ignore by default by NPM.
     // https://docs.npmjs.com/cli/v9/using-npm/developers#keeping-files-out-of-your-package
     case "gitignore":
-    case "swcrc":
+    case "swcrc": {
       const dotFileDestination = path.join(projectPath, `.${file}`);
       fs.writeFileSync(dotFileDestination, fileContent, "utf8");
       break;
+    }
 
-    default:
+    default: {
       const fileDestination = path.join(projectPath, file);
 
       if (binaryFileContent) {
@@ -44,6 +50,7 @@ const createFile = async (filePath: string, projectPath: string, file: string) =
         fs.writeFileSync(fileDestination, fileContent, "utf8");
       }
       break;
+    }
   }
 };
 
@@ -69,7 +76,13 @@ export const createDirectory = async (templatePath: string, projectPath: string)
         await createDirectory(deepTemplatePath, newDirPath);
       }
     }
-  } catch (error: any) {
-    throw new Error(error);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(chalk.red(error.message));
+      console.error(chalk.white.bgRedBright(error.stack));
+      throw new Error(error.name);
+    } else {
+      throw new Error("An error occurred while creating a directory");
+    }
   }
 };
