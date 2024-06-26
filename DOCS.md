@@ -16,6 +16,8 @@
     4. **`pnpm build`** : Build the bundle for production
     5. **`pnpm shebang`** : Add shebang to the file so npx can execute smoothly
     6. **`pnpm release`** : Run both `pnpm build` and `pnpm shebang`, used by deployment server or local testing with `npm pack`.
+    7. **`pnpm lint`** : lint the source file of the project, but will ignore all file within the `template` directory.
+    8. **`pnpm lint:fix`** : Does the same thing as `pnpm lint`, but will fix any lint error whenever possible.
 
 ## Documentation
 

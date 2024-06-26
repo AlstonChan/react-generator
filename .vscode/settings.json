@@ -5,9 +5,12 @@
     "pathinfo",
     "pmmmwh",
     "Poetsen",
+    "prebuild",
     "reactjs",
     "stackoverflow",
+    "swcrc",
     "systemvars",
-    "tsbuildinfo"
+    "tsbuildinfo",
+    "tseslint"
   ]
 }

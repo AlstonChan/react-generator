@@ -1,6 +1,11 @@
+// Nodejs modules
 import fs from "node:fs";
 import path from "node:path";
 
+// External modules
+import chalk from "chalk";
+
+// Constants
 const binaryFileType = /\.(png|svg|jpg|jpeg|gif|webp|avif|heic|heif|ico|ttf)/i;
 
 const createPackageJSON = async (
@@ -15,11 +20,7 @@ const createPackageJSON = async (
   return fs.writeFileSync(fileDestination, updatedJSON, "utf8");
 };
 
-const createFile = async (
-  filePath: string,
-  projectPath: string,
-  file: string
-) => {
+const createFile = async (filePath: string, projectPath: string, file: string) => {
   const isBinaryFileType = path.extname(file).match(binaryFileType);
   const binaryFileContent =
     isBinaryFileType && fs.readFileSync(filePath, { encoding: "binary" });
@@ -34,11 +35,13 @@ const createFile = async (
     // is ignore by default by NPM.
     // https://docs.npmjs.com/cli/v9/using-npm/developers#keeping-files-out-of-your-package
     case "gitignore":
+    case "swcrc": {
       const dotFileDestination = path.join(projectPath, `.${file}`);
       fs.writeFileSync(dotFileDestination, fileContent, "utf8");
       break;
+    }
 
-    default:
+    default: {
       const fileDestination = path.join(projectPath, file);
 
       if (binaryFileContent) {
@@ -47,13 +50,11 @@ const createFile = async (
         fs.writeFileSync(fileDestination, fileContent, "utf8");
       }
       break;
+    }
   }
 };
 
-export const createDirectory = async (
-  templatePath: string,
-  projectPath: string
-) => {
+export const createDirectory = async (templatePath: string, projectPath: string) => {
   try {
     // get all files that needs to be copied to user working directory
     const filesToCreate = fs.readdirSync(templatePath, {
@@ -75,7 +76,13 @@ export const createDirectory = async (
         await createDirectory(deepTemplatePath, newDirPath);
       }
     }
-  } catch (error: any) {
-    throw new Error(error);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(chalk.red(error.message));
+      console.error(chalk.white.bgRedBright(error.stack));
+      throw new Error(error.name);
+    } else {
+      throw new Error("An error occurred while creating a directory");
+    }
   }
 };

@@ -1,10 +1,9 @@
+// External modules
+import chalk from "chalk";
 import spawn from "cross-spawn";
 import ora from "ora";
 
-export const installDeps = async (
-  packageManager: string,
-  projectPath: string
-) => {
+export const installDeps = async (packageManager: string, projectPath: string) => {
   return new Promise<void>((resolve, reject) => {
     const spinner = ora("Installing dependencies...");
     try {
@@ -30,10 +29,16 @@ export const installDeps = async (
         spinner.succeed("All dependencies have been installed");
         resolve();
       });
-    } catch (error: any) {
+    } catch (error) {
       spinner.fail("Failed to install dependencies");
       reject(error);
-      throw new Error(error);
+      if (error instanceof Error) {
+        console.error(chalk.red(error.message));
+        console.error(chalk.white.bgRedBright(error.stack));
+        throw new Error(error.name);
+      } else {
+        throw new Error("An error occurred while creating a directory");
+      }
     }
   });
 };

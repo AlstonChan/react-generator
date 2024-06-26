@@ -1,4 +1,4 @@
-var webpack = require("webpack");
+const webpack = require("webpack");
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 
@@ -13,10 +13,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
-          },
+          loader: "swc-loader",
         },
       },
       {
@@ -49,6 +46,7 @@ module.exports = {
       $Styles: path.resolve(__dirname, "src/styles/"),
       $Components: path.resolve(__dirname, "src/components/"),
     },
+    extensions: [".jsx", ".js"],
   },
   target: "web",
 };
