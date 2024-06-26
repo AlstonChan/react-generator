@@ -1,4 +1,4 @@
-import styles from "$Styles/homepage.module.scss";
+import * as styles from "$Styles/homepage.module.scss";
 import react from "../../public/react.png";
 import webpack from "../../public/webpack.png";
 

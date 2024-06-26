@@ -46,6 +46,7 @@ module.exports = {
       $Styles: path.resolve(__dirname, "src/styles/"),
       $Components: path.resolve(__dirname, "src/components/"),
     },
+    extensions: [".jsx", ".js"],
   },
   target: "web",
 };

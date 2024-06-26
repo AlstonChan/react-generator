@@ -9,6 +9,6 @@ test("check heading", () => {
       <Homepage />
     </BrowserRouter>
   );
-  const linkElement = screen.getByText(/React Webpack Template/i);
+  const linkElement = screen.getByText(/React Generator \(Webpack \+ Babel\)/i);
   expect(linkElement).toBeInTheDocument();
 });

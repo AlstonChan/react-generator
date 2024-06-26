@@ -7,10 +7,17 @@ settings:
 importers:
 
   .:
+    dependencies:
+      figlet:
+        specifier: ^1.7.0
+        version: 1.7.0
     devDependencies:
       '@types/cross-spawn':
         specifier: ^6.0.6
         version: 6.0.6
+      '@types/figlet':
+        specifier: ^1.5.8
+        version: 1.5.8
       '@types/inquirer':
         specifier: ^9.0.7
         version: 9.0.7
@@ -71,6 +78,9 @@ packages:
 
   '@types/cross-spawn@6.0.6':
     resolution: {integrity: sha512-fXRhhUkG4H3TQk5dBhQ7m/JDdSNHKwR2BBia62lhwEIq9xGiQKLxd6LymNhn47SjXhsUEPmxi+PKw2OkW4LLjA==}
+
+  '@types/figlet@1.5.8':
+    resolution: {integrity: sha512-G22AUvy4Tl95XLE7jmUM8s8mKcoz+Hr+Xm9W90gJsppJq9f9tHvOGkrpn4gRX0q/cLtBdNkWtWCKDg2UDZoZvQ==}
 
   '@types/inquirer@9.0.7':
     resolution: {integrity: sha512-Q0zyBupO6NxGRZut/JdmqYKOnN95Eg5V8Csg3PGKkP+FnvsUZx1jAyK7fztIszxxMuoBA6E3KXWvdZVXIpx60g==}
@@ -202,6 +212,11 @@ packages:
   external-editor@3.1.0:
     resolution: {integrity: sha512-hMQ4CX1p1izmuLYyZqLMO/qGNw10wSv9QDCPfzXfyFrOaCSSoRfqE1Kf1s5an66J5JZC62NewG+mK49jOCtQew==}
     engines: {node: '>=4'}
+
+  figlet@1.7.0:
+    resolution: {integrity: sha512-gO8l3wvqo0V7wEFLXPbkX83b7MVjRrk1oRLfYlZXol8nEpb/ON9pcKLI4qpBv5YtOTfrINtqb7b40iYY2FTWFg==}
+    engines: {node: '>= 0.4.0'}
+    hasBin: true
 
   foreground-child@3.2.1:
     resolution: {integrity: sha512-PXUUyLqrR2XCWICfv6ukppP96sdFwWbNEnfEMt7jNsISjMsvaLNinAHNDYyvkyU+SZG2BTSbT5NjG+vZslfGTA==}
@@ -507,6 +522,8 @@ snapshots:
     dependencies:
       '@types/node': 18.19.39
 
+  '@types/figlet@1.5.8': {}
+
   '@types/inquirer@9.0.7':
     dependencies:
       '@types/through': 0.0.33
@@ -631,6 +648,8 @@ snapshots:
       chardet: 0.7.0
       iconv-lite: 0.4.24
       tmp: 0.0.33
+
+  figlet@1.7.0: {}
 
   foreground-child@3.2.1:
     dependencies:

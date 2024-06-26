@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.6",
+    "@types/figlet": "^1.5.8",
     "@types/inquirer": "^9.0.7",
     "@types/node": "^18.19.39",
     "@types/validate-npm-package-name": "^4.0.2",
@@ -52,5 +53,8 @@
   },
   "engines": {
     "node": ">=16.14.0"
+  },
+  "dependencies": {
+    "figlet": "^1.7.0"
   }
 }

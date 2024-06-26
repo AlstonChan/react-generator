@@ -127,9 +127,6 @@ module.exports = (env) => {
       new ReactRefreshWebpackPlugin({ include: /\.(js|jsx)$/ }),
       new BundleAnalyzerPlugin({ logLevel: "silent", openAnalyzer: false }),
     ].filter(Boolean),
-    resolve: {
-      extensions: [".jsx", ".js"],
-    },
     performance: {
       hints: false,
     },

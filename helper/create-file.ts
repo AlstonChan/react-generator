@@ -15,11 +15,7 @@ const createPackageJSON = async (
   return fs.writeFileSync(fileDestination, updatedJSON, "utf8");
 };
 
-const createFile = async (
-  filePath: string,
-  projectPath: string,
-  file: string
-) => {
+const createFile = async (filePath: string, projectPath: string, file: string) => {
   const isBinaryFileType = path.extname(file).match(binaryFileType);
   const binaryFileContent =
     isBinaryFileType && fs.readFileSync(filePath, { encoding: "binary" });
@@ -34,6 +30,7 @@ const createFile = async (
     // is ignore by default by NPM.
     // https://docs.npmjs.com/cli/v9/using-npm/developers#keeping-files-out-of-your-package
     case "gitignore":
+    case "swcrc":
       const dotFileDestination = path.join(projectPath, `.${file}`);
       fs.writeFileSync(dotFileDestination, fileContent, "utf8");
       break;
@@ -50,10 +47,7 @@ const createFile = async (
   }
 };
 
-export const createDirectory = async (
-  templatePath: string,
-  projectPath: string
-) => {
+export const createDirectory = async (templatePath: string, projectPath: string) => {
   try {
     // get all files that needs to be copied to user working directory
     const filesToCreate = fs.readdirSync(templatePath, {

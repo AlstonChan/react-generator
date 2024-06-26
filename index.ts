@@ -1,30 +1,35 @@
 #!/usr/bin/env node
 
+// Nodejs modules
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import figlet from "figlet";
+
+// External modules
 import ora from "ora";
 import chalk from "chalk";
-import inquirer, { Answers } from "inquirer";
+import inquirer from "inquirer";
 
+//  Internal modules
 import questions from "./helper/questions.js";
 import { createDirectory } from "./helper/create-file.js";
-import { installDeps } from "./helper/install.js";
 import { initGit } from "./helper/git.js";
+import { installDeps } from "./helper/install.js";
 
-// intro message
-console.log("", "\n", chalk.green.bold("REACT APP GENERATOR"), "", "\n");
+// Constants
+const __dirname: string = path.dirname(fileURLToPath(import.meta.url));
 
 async function createProject() {
   try {
-    const { projectName, packageManager }: Answers = await inquirer.prompt(questions);
-    const __dirname: string = path.dirname(fileURLToPath(import.meta.url));
+    const { projectName, packageManager, transpiler } = await inquirer.prompt(questions);
     // since file will actually be executed in dist folder
     // we have to back up one step in order to get the
     // correct template path
     const noDistPath = path.dirname(__dirname);
     // where the template folder located at
-    const templatePath: string = `${noDistPath}/template`;
+    const templatePath: string = `${noDistPath}/template/${transpiler}`;
+
     // user current working directory where user wants to
     // create react template folder at
     const projectPath = path.join(process.cwd(), projectName);
@@ -38,7 +43,7 @@ async function createProject() {
     // change directory to the newly created react app
     process.chdir(projectPath);
 
-    // await installDeps(packageManager, projectPath);
+    await installDeps(packageManager, projectPath);
     await initGit();
 
     console.log(
@@ -63,4 +68,15 @@ async function createProject() {
   }
 }
 
-createProject();
+figlet.text("REACT APP GEN", { font: "ANSI Shadow" }, function (err, data) {
+  if (err) {
+    console.log("Something went wrong...");
+    console.dir(err);
+    return;
+  }
+  console.log("\n");
+  console.log(data);
+  console.log("\n");
+
+  createProject();
+});
